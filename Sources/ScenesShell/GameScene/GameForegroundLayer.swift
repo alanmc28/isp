@@ -7,7 +7,7 @@ import Scenes
    */
 
 
-class ForegroundLayer : Layer {
+class GameForegroundLayer : Layer {
     
       init() {
           // Using a meaningful name can be helpful for debugging

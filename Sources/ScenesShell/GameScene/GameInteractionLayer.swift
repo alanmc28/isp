@@ -1,4 +1,3 @@
-
 import Igis
 import Scenes
 
@@ -8,7 +7,7 @@ import Scenes
    */
 
 
-class InteractionLayer : Layer, KeyDownHandler {
+class GameInteractionLayer : Layer, KeyDownHandler {
 
     var userChoice = ""
     let game = Game()
@@ -29,29 +28,29 @@ class InteractionLayer : Layer, KeyDownHandler {
     
       override func postTeardown() {
         dispatcher.unregisterKeyDownHandler(handler: self)
-      }
-      
-      private func switchToGame() {
-          director.enqueueScene(scene: GameScene())
-          director.transitionToNextScene()
-      }
-      
+    }
+
 
       func onKeyDown(key:String, code:String, ctrlKey:Bool, shiftKey:Bool, altKey:Bool, metaKey:Bool) {
-         
           if (key == "w") {
-              switchToGame()
+              game.displayResults(userChoice: "water")
+                 
           }
           
           if (key == "f") {
-              switchToGame()
+              game.displayResults(userChoice: "fire")
+              
           }
           
           if (key == "l") {
+              game.displayResults(userChoice: "leaf")
               
-              switchToGame()
           }
 
+          if (key == "r") {
+              director.enqueueScene(scene: MainScene())
+              director.transitionToNextScene()
+          }
                       
         }
         
